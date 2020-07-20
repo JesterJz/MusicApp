@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imageViewBackgroundPlaylist"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:scaleType="fitXY" />
+    <View
+        android:background="@drawable/custom_background_banner"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"/>
+    <ImageView
+        android:id="@+id/imgIconPlaylist"
+        android:layout_alignBottom="@id/imageViewBackgroundPlaylist"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="6dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:id="@+id/txtTitlePlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imgIconPlaylist"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/imgIconPlaylist"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="cos cai lo "
+        android:textColor="#fff"
+        android:textStyle="bold" />
+</RelativeLayout>

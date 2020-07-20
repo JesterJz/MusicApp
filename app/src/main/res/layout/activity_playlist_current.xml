@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.PlaylistCurrent"
+    android:background="@drawable/bg">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarListPlayList"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"/>
+        <TextView
+            android:id="@+id/txtPlaylist"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_below="@+id/toolbarListPlayList"
+            android:paddingTop="20dp"
+            android:text="LIST NHẠC CHO HÔM NAY"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+        <LinearLayout
+            android:layout_below="@id/txtPlaylist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+                <ListView
+                    android:id="@+id/ListTitlePlaylist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
+                </ListView>
+        </LinearLayout>
+</RelativeLayout>

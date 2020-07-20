@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:fillViewport="true"
+    android:isScrollContainer="false">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/linearLayoutHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <fragment
+            android:name="com.build.myapplication.Fragment.Fragment_Banner"
+            android:id="@+id/fragment_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:name="com.build.myapplication.Fragment.Fragment_General"
+            android:id="@+id/fragment_general"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:name="com.build.myapplication.Fragment.Fragment_ChuDe_Current_Day"
+            android:id="@+id/fragment_chude_current_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:name="com.build.myapplication.Fragment.Fragment_TheLoai_Current_Day"
+            android:id="@+id/fragment_theloai_current_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:name="com.build.myapplication.Fragment.Fragment_AlbumHot"
+            android:id="@+id/fragment_album_hot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:name="com.build.myapplication.Fragment.Fragment_SongLove"
+            android:id="@+id/fragment_songlove"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/linearLayoutAlbumHot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgAlbum"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY" />
+        <TextView
+            android:id="@+id/TenAlbumHot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:ellipsize="end"
+            android:maxWidth="200dp"
+            android:maxLines="1"
+            android:text="asdfkhasdlfhaosd asdh fkasdo oasdo faksdgfiuhasdkjhf"
+            android:textColor="#000"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/TenSinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:ellipsize="end"
+            android:maxWidth="200dp"
+            android:maxLines="1"
+            android:text="asdfkhasdlfhaosd asdh fkasdo oasdo faksdgfiuhasdkjhf"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
