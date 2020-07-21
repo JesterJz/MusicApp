@@ -4,13 +4,17 @@ import com.build.myapplication.Model.Album;
 import com.build.myapplication.Model.ChudeAll;
 import com.build.myapplication.Model.Playlist;
 import com.build.myapplication.Model.QuangCao;
+import com.build.myapplication.Model.Song;
 import com.build.myapplication.Model.SongLove;
 import com.build.myapplication.Model.TheLoai;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 //sent and receiver method tuong tac
 public interface DataService {
@@ -35,4 +39,8 @@ public interface DataService {
 
     @GET("SongLove.php")
     Call<List<SongLove>> GetSongLove();
+
+    @FormUrlEncoded
+    @POST("listsong.php")
+    Call<List<Song>> GetListSongAds(@Field("IDAds") String IDAds);
 }

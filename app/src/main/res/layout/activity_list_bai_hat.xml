@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout 
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/coordinatorLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +10,7 @@
     tools:context=".Activity.ListBaiHatActivity">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:fitsSystemWindows="true"
         android:id="@+id/appbarlayout">
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -19,6 +20,7 @@
             app:expandedTitleMarginBottom="20dp"
             android:fitsSystemWindows="true"
             android:background="@mipmap/ic_launcher"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
             android:id="@+id/collapsingtoolbar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <View
@@ -29,7 +31,7 @@
                 android:elevation="6dp"
                 android:id="@+id/toolbarListBaiHat"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"/>
             <ImageView
@@ -40,40 +42,57 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="28dp"
-                android:elevation="6dp"/>
+                android:elevation="6dp" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ImageButton
-            android:id="@+id/btnActionAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:backgroundTint="#FAFAFA"
-            android:scaleType="fitXY"
-            android:src="@drawable/icon_play_24" />
-
-        <TextView
-            android:id="@+id/textviewPlayAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="9dp"
-            android:layout_toRightOf="@+id/btnActionAll"
-            android:text="Phát tất cả"
-            android:textColor="#363636"
-            android:textSize="20dp" />
-        <androidx.recyclerview.widget.RecyclerView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textviewPlayAll"
-            android:layout_marginTop="10dp"
-            android:padding="10dp" />
-    </RelativeLayout>
+            android:background="@drawable/vien">
+
+            <ImageButton
+                android:id="@+id/btnActionAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="#FAFAFA"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_play_24" />
+
+            <TextView
+                android:id="@+id/textviewPlayAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="9dp"
+                android:layout_toEndOf="@+id/btnActionAll"
+                android:text="Phát tất cả"
+                android:textColor="#363636"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/vien">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycerviewlistsong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
