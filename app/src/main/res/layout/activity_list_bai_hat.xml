@@ -1,98 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/coordinatorLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".Activity.ListBaiHatActivity">
+
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:fitsSystemWindows="true"
-        android:id="@+id/appbarlayout">
+        android:layout_height="200dp"
+        android:fitsSystemWindows="true">
+
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingtoolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@mipmap/ic_launcher"
+            android:fitsSystemWindows="true"
             app:expandedTitleGravity="center|bottom"
             app:expandedTitleMarginBottom="20dp"
-            android:fitsSystemWindows="true"
-            android:background="@mipmap/ic_launcher"
             app:expandedTitleTextAppearance="@style/CollapsingToolbarLayoutExpandedTextStyle"
-            android:id="@+id/collapsingtoolbar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
             <View
-                android:background="@drawable/custom_background_banner"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_background_banner" />
+
             <androidx.appcompat.widget.Toolbar
-                android:elevation="6dp"
                 android:id="@+id/toolbarListBaiHat"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"/>
+                android:layout_height="45dp"
+                android:elevation="6dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
             <ImageView
-                android:src="@mipmap/ic_launcher"
+                android:id="@+id/imageviewListCaKhuc"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/imageviewListCaKhuc"
                 android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
                 android:layout_marginTop="28dp"
-                android:elevation="6dp" />
+                android:layout_marginBottom="30dp"
+                android:contentDescription="TODO"
+                android:elevation="6dp"
+                android:src="@mipmap/ic_launcher" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
-
-    <LinearLayout
-        android:fitsSystemWindows="true"
+    <RelativeLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:background="@drawable/vien">
+
+        <ImageButton
+            android:id="@+id/btnActionAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:backgroundTint="#FAFAFA"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon_play_24"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/textviewPlayAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="9dp"
+            android:layout_toEndOf="@+id/btnActionAll"
+            android:text="Phát tất cả"
+            android:textColor="#363636"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/vien"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycerviewlistsong"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/vien">
-
-            <ImageButton
-                android:id="@+id/btnActionAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:backgroundTint="#FAFAFA"
-                android:scaleType="fitXY"
-                android:src="@drawable/icon_play_24" />
-
-            <TextView
-                android:id="@+id/textviewPlayAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="9dp"
-                android:layout_toEndOf="@+id/btnActionAll"
-                android:text="Phát tất cả"
-                android:textColor="#363636"
-                android:textSize="20dp" />
-        </RelativeLayout>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/vien">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycerviewlistsong"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.recyclerview.widget.RecyclerView>
-        </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
+            android:layout_height="wrap_content"/>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,22 +1,14 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="android:statusBarColor">#8B000000</item>
         <item name="colorPrimary">#A6A6A6</item>
-<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">#FFFFFF</item>
     </style>
 
-<!--    <style name="AppTheme.CustomActionBar" parent="Theme.AppCompat.Light">-->
-<!--        <item name="android:statusBarColor">#8B000000</item>-->
-<!--        <item name="colorPrimary">#fff</item>-->
-<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--        <item name="colorAccent">@color/colorAccent</item>-->
-<!--    </style>-->
     <style name="CollapsingToolbarLayoutExpandedTextStyle" parent="AppTheme">
-
         <item name="android:textSize">18dp</item>
     </style>
 </resources>

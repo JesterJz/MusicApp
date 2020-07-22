@@ -28,11 +28,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -40,6 +43,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
     dependencies {
         implementation 'me.relex:circleindicator:1.2.2@aar'
     }
@@ -48,7 +52,7 @@ dependencies {
 //    }
 
 //    compile 'com.android.support:cardview-v7:26.1.0'
-//    implementation 'com.android.support:recyclerview-v7:26.1.0'
+//    implementation 'com.android.support:recyclerViewListSong-v7:26.1.0'
 //    implementation 'com.android.support:design:27.0.2'
     //implementation 'de.hdodenhof:circleimageview:2.2.0'
 }

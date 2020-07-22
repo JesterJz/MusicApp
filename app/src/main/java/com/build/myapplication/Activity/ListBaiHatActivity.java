@@ -3,20 +3,26 @@ package com.build.myapplication.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.build.myapplication.Adapter.ListSongAdapter;
+import com.build.myapplication.Model.Playlist;
 import com.build.myapplication.Model.QuangCao;
 import com.build.myapplication.Model.Song;
 import com.build.myapplication.R;
@@ -40,16 +46,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.graphics.Color.*;
+
 public class ListBaiHatActivity extends AppCompatActivity {
     CoordinatorLayout coordinatorLayout;
     CollapsingToolbarLayout collapsingToolbarLayout;
-    RecyclerView recyclerView;
+    RecyclerView recyclerViewListSong;
     Toolbar toolbar;
     ImageButton imageButton;
-    QuangCao quangCao;
     ImageView imageView;
+
+    QuangCao quangCao;
+    Playlist playlist;
+
     ArrayList<Song> songArrayList;
     Bitmap bitmap;
+    ListSongAdapter listSongAdapter;
 
 
     @Override
@@ -60,19 +72,26 @@ public class ListBaiHatActivity extends AppCompatActivity {
         AnhXa();
         init();
         if (quangCao != null && !quangCao.getTenBaiHat().equals("")){
-            setValueInView(quangCao.getTenBaiHat(),quangCao.getHinhBaiHat());
+            setValueInViewAds(quangCao.getTenBaiHat(),quangCao.getHinhBaiHat());
             GetDataAds(quangCao.getIDAds());
+        }
+        if (playlist != null && !playlist.getTen().equals("")){
+            setValueInView(playlist.getTen(),playlist.getHinhNen(),playlist.getHinhIcon());
+//            Toast.makeText(ListBaiHatActivity.this,playlist.getIDPlayList(),Toast.LENGTH_LONG).show();
+            GetDataPlaylist(playlist.getIDPlayList());
         }
     }
 
-    private void GetDataAds(String IDADs) {
+    private void GetDataPlaylist(String IdPlaylist) {
         DataService dataService = APIService.getService();
-        Call<List<Song>> callListSongAds = dataService.GetListSongAds(IDADs);
-        callListSongAds.enqueue(new Callback<List<Song>>() {
+        Call<List<Song>> callListPlaylist = dataService.GetListSongPlaylist(IdPlaylist);
+        callListPlaylist.enqueue(new Callback<List<Song>>() {
             @Override
             public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
                 songArrayList = (ArrayList<Song>) response.body();
-                Log.d("BBB",songArrayList.get(0).getTenBaiHat());
+                listSongAdapter = new ListSongAdapter(ListBaiHatActivity.this,songArrayList);
+                recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListBaiHatActivity.this));
+                recyclerViewListSong.setAdapter(listSongAdapter);
             }
 
             @Override
@@ -82,37 +101,34 @@ public class ListBaiHatActivity extends AppCompatActivity {
         });
     }
 
-    private void setValueInView(String ten,String hinh) {
+    private void GetDataAds(String IDADs) {
+        DataService dataService = APIService.getService();
+        Call<List<Song>> callListSongAds = dataService.GetListSongAds(IDADs);
+        callListSongAds.enqueue(new Callback<List<Song>>() {
+            @Override
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                songArrayList = (ArrayList<Song>) response.body();
+                listSongAdapter = new ListSongAdapter(ListBaiHatActivity.this,songArrayList);
+                recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListBaiHatActivity.this));
+                recyclerViewListSong.setAdapter(listSongAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Song>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void setValueInViewAds(String ten,String hinh) {
         collapsingToolbarLayout.setTitle(ten);
         new GetImageFromUrl().execute(hinh);
-//        try {
-//            conn.connect();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            URL url = new URL(hinh);
-//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//            connection.setDoInput(true);
-//            connection.connect();
-//            InputStream input = connection.getInputStream();
-////            InputStream input = null;
-////            connection.setRequestMethod("GET");
-////            connection.connect();
-//
-////            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-////                input = connection.getInputStream();
-////            }
-//            Bitmap bitmap = BitmapFactory.decodeStream(input);
-//            BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(),bitmap);
-//            collapsingToolbarLayout.setBackground(bitmapDrawable);
-//        }
-//        catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         Picasso.get().load(hinh).into(imageView);
+    }
+    private void setValueInView(String ten,String imgHinhNen,String imgIcon) {
+        collapsingToolbarLayout.setTitle(ten);
+        new GetImageFromUrl().execute(imgHinhNen);
+        Picasso.get().load(imgIcon).into(imageView);
     }
 
     private void init() {
@@ -124,14 +140,14 @@ public class ListBaiHatActivity extends AppCompatActivity {
                 finish();
             }
         });
-        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
-        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
+        collapsingToolbarLayout.setExpandedTitleColor(WHITE);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(WHITE);
     }
 
     private void AnhXa() {
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
         collapsingToolbarLayout = findViewById(R.id.collapsingtoolbar);
-        recyclerView  = findViewById(R.id.recycerviewlistsong);
+        recyclerViewListSong  = findViewById(R.id.recycerviewlistsong);
         toolbar = findViewById(R.id.toolbarListBaiHat);
         imageButton = findViewById(R.id.btnActionAll);
         imageView = findViewById(R.id.imageviewListCaKhuc);
@@ -140,10 +156,11 @@ public class ListBaiHatActivity extends AppCompatActivity {
     private void DataIntent() {
         Intent intent = getIntent();
         if (intent.hasExtra("Ads")){
-            if (intent.hasExtra("Ads")){
-                quangCao = (QuangCao) intent.getSerializableExtra("Ads");
-                Log.d("BBB",quangCao.getTenBaiHat());
-            }
+            quangCao = (QuangCao) intent.getSerializableExtra("Ads");
+        }
+        if (intent.hasExtra("idplaylist")){
+            playlist = (Playlist) intent.getSerializableExtra("idplaylist");
+            Log.d("BBB",playlist.getIDPlayList());
         }
     }
     public class GetImageFromUrl extends AsyncTask<String, Void, Bitmap> {

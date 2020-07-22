@@ -5,12 +5,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.build.myapplication.Adapter.BannerAdapter;
 import com.build.myapplication.Adapter.PlaylistAdapter;
@@ -64,6 +67,15 @@ public class PlaylistCurrent extends AppCompatActivity {
                 playlistArrayList = (ArrayList<Playlist>) response.body();
                 playlistAdapter = new PlaylistAdapter(PlaylistCurrent.this,android.R.layout.simple_expandable_list_item_1,playlistArrayList);
                 listView.setAdapter(playlistAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        Toast.makeText(PlaylistCurrent.this,playlistArrayList.get(position).getIDPlayList(),Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(PlaylistCurrent.this,ListBaiHatActivity.class);
+                        intent.putExtra("idplaylist",playlistArrayList.get(position));
+                        startActivity(intent);
+                    }
+                });
             }
             @Override
             public void onFailure(Call<List<Playlist>> call, Throwable t) {
