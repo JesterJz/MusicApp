@@ -1,5 +1,6 @@
 package com.build.myapplication.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.build.myapplication.Activity.ListBaiHatActivity;
 import com.build.myapplication.Model.QuangCao;
 import com.build.myapplication.Model.TheLoai;
 import com.build.myapplication.R;
@@ -33,11 +35,13 @@ public class Fragment_TheLoai_Current_Day extends Fragment {
 
     HorizontalScrollView horizontalScrollView;
     TextView textView;
+    ArrayList<TheLoai> theLoaiArrayList;
     View view;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_theloai_current_day,container,false);
+        view = inflater.inflate(R.layout.fragment_theloai_current_day, container, false);
         AnhXa();
         GetData();
         return view;
@@ -49,30 +53,39 @@ public class Fragment_TheLoai_Current_Day extends Fragment {
         listCall.enqueue(new Callback<List<TheLoai>>() {
             @Override
             public void onResponse(Call<List<TheLoai>> call, Response<List<TheLoai>> response) {
-                ArrayList<TheLoai> theLoaiArrayList = (ArrayList<TheLoai>) response.body();
+                theLoaiArrayList = (ArrayList<TheLoai>) response.body();
                 LinearLayout linearLayout = new LinearLayout(getActivity());
                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(580, 250);
-                layoutParams.setMargins(10,20,10,30);
-                for (int i = 0;i < theLoaiArrayList.size();i++){
+                layoutParams.setMargins(10, 20, 10, 30);
+                for (int i = 0; i < theLoaiArrayList.size(); i++) {
                     CardView cardView = new CardView(getActivity());
                     cardView.setRadius(10);
                     ImageView imageView = new ImageView(getActivity());
                     imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                    if (theLoaiArrayList.get(i).getHinhTheLoai() !=null ){
+                    if (theLoaiArrayList.get(i).getHinhTheLoai() != null) {
                         Picasso.get().load(theLoaiArrayList.get(i).getHinhTheLoai()).into(imageView);
                     }
                     cardView.setLayoutParams(layoutParams);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+                    int finalI = i;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), ListBaiHatActivity.class);
+                            intent.putExtra("idtheloai", theLoaiArrayList.get(finalI));
+                            startActivity(intent);
+                        }
+                    });
                 }
                 horizontalScrollView.addView(linearLayout);
             }
 
             @Override
             public void onFailure(Call<List<TheLoai>> call, Throwable t) {
-                Log.d("BBB","don't data return");
+                Log.d("BBB", "don't data return");
             }
         });
     }

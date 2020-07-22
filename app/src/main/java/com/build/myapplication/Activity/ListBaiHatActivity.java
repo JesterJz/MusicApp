@@ -22,9 +22,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.build.myapplication.Adapter.ListSongAdapter;
+import com.build.myapplication.Model.Chude;
 import com.build.myapplication.Model.Playlist;
 import com.build.myapplication.Model.QuangCao;
 import com.build.myapplication.Model.Song;
+import com.build.myapplication.Model.TheLoai;
 import com.build.myapplication.R;
 import com.build.myapplication.Service.APIService;
 import com.build.myapplication.Service.DataService;
@@ -58,6 +60,8 @@ public class ListBaiHatActivity extends AppCompatActivity {
 
     QuangCao quangCao;
     Playlist playlist;
+    TheLoai theLoai;
+    Chude chude;
 
     ArrayList<Song> songArrayList;
     Bitmap bitmap;
@@ -80,6 +84,52 @@ public class ListBaiHatActivity extends AppCompatActivity {
 //            Toast.makeText(ListBaiHatActivity.this,playlist.getIDPlayList(),Toast.LENGTH_LONG).show();
             GetDataPlaylist(playlist.getIDPlayList());
         }
+        if (theLoai != null && !theLoai.getTenTheLoai().equals("")){
+            setValueInViewAds(theLoai.getTenTheLoai(),theLoai.getHinhTheLoai());
+            GetDataTheLoai(theLoai.getIDTheLoai());
+        }
+        if (chude != null && !chude.getTenChuDe().equals("")){
+            setValueInViewAds(chude.getTenChuDe(),chude.getHinhChuDe());
+            GetDataChuDe(chude.getIDChuDe());
+        }
+    }
+
+    private void GetDataChuDe(String idChuDe) {
+        DataService dataService = APIService.getService();
+        Call<List<Song>> calllistChude = dataService.GetListSongChuDe(idChuDe);
+        calllistChude.enqueue(new Callback<List<Song>>() {
+            @Override
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                songArrayList = (ArrayList<Song>) response.body();
+                listSongAdapter = new ListSongAdapter(ListBaiHatActivity.this,songArrayList);
+                recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListBaiHatActivity.this));
+                recyclerViewListSong.setAdapter(listSongAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Song>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void GetDataTheLoai(String idTheLoai) {
+        DataService dataService = APIService.getService();
+        Call<List<Song>> calllistTheLoai = dataService.GetListSongTheLoai(idTheLoai);
+        calllistTheLoai.enqueue(new Callback<List<Song>>() {
+            @Override
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                songArrayList = (ArrayList<Song>) response.body();
+                listSongAdapter = new ListSongAdapter(ListBaiHatActivity.this,songArrayList);
+                recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListBaiHatActivity.this));
+                recyclerViewListSong.setAdapter(listSongAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Song>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void GetDataPlaylist(String IdPlaylist) {
@@ -161,6 +211,14 @@ public class ListBaiHatActivity extends AppCompatActivity {
         if (intent.hasExtra("idplaylist")){
             playlist = (Playlist) intent.getSerializableExtra("idplaylist");
             Log.d("BBB",playlist.getIDPlayList());
+        }
+        if (intent.hasExtra("idtheloai")){
+            theLoai = (TheLoai) intent.getSerializableExtra("idtheloai");
+            Log.d("BBB",theLoai.getIDTheLoai());
+        }
+        if (intent.hasExtra("idchude")){
+            chude = (Chude) intent.getSerializableExtra("idchude");
+            Log.d("BBB",chude.getIDChuDe());
         }
     }
     public class GetImageFromUrl extends AsyncTask<String, Void, Bitmap> {

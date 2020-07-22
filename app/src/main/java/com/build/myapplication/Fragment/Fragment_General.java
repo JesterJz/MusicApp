@@ -2,25 +2,18 @@ package com.build.myapplication.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.build.myapplication.Activity.AlbumActivity;
-import com.build.myapplication.Activity.MainActivity;
-import com.build.myapplication.Activity.PlaylistCurrent;
-import com.build.myapplication.Model.Playlist;
+import com.build.myapplication.Activity.PlaylistActivity;
 import com.build.myapplication.R;
 
 public class Fragment_General extends Fragment {
@@ -47,7 +40,7 @@ public class Fragment_General extends Fragment {
             public void onClick(View v) {
 //                Log.d("BBB", String.valueOf(getActivity()));
                 //Toast.makeText(getActivity(), string,Toast.LENGTH_LONG).show();
-                  Intent intent = new Intent(getActivity(), PlaylistCurrent.class);
+                  Intent intent = new Intent(getActivity(), PlaylistActivity.class);
                   startActivity(intent);
             }
         });

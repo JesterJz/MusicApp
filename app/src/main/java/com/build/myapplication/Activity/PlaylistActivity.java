@@ -2,23 +2,15 @@ package com.build.myapplication.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.build.myapplication.Adapter.BannerAdapter;
 import com.build.myapplication.Adapter.PlaylistAdapter;
 import com.build.myapplication.Model.Playlist;
-import com.build.myapplication.Model.QuangCao;
 import com.build.myapplication.R;
 import com.build.myapplication.Service.APIService;
 import com.build.myapplication.Service.DataService;
@@ -26,12 +18,11 @@ import com.build.myapplication.Service.DataService;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.relex.circleindicator.CircleIndicator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PlaylistCurrent extends AppCompatActivity {
+public class PlaylistActivity extends AppCompatActivity {
     Toolbar toolbar;
     PlaylistAdapter playlistAdapter;
     ArrayList<Playlist> playlistArrayList;
@@ -65,13 +56,13 @@ public class PlaylistCurrent extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Playlist>> call, Response<List<Playlist>> response) {
                 playlistArrayList = (ArrayList<Playlist>) response.body();
-                playlistAdapter = new PlaylistAdapter(PlaylistCurrent.this,android.R.layout.simple_expandable_list_item_1,playlistArrayList);
+                playlistAdapter = new PlaylistAdapter(PlaylistActivity.this,android.R.layout.simple_expandable_list_item_1,playlistArrayList);
                 listView.setAdapter(playlistAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                        Toast.makeText(PlaylistCurrent.this,playlistArrayList.get(position).getIDPlayList(),Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(PlaylistCurrent.this,ListBaiHatActivity.class);
+                        Intent intent = new Intent(PlaylistActivity.this,ListBaiHatActivity.class);
                         intent.putExtra("idplaylist",playlistArrayList.get(position));
                         startActivity(intent);
                     }
