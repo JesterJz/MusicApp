@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.build.myapplication.Adapter.ListSongAdapter;
+import com.build.myapplication.Model.Album;
 import com.build.myapplication.Model.Chude;
 import com.build.myapplication.Model.Playlist;
 import com.build.myapplication.Model.QuangCao;
@@ -62,6 +63,7 @@ public class ListBaiHatActivity extends AppCompatActivity {
     Playlist playlist;
     TheLoai theLoai;
     Chude chude;
+    Album album;
 
     ArrayList<Song> songArrayList;
     Bitmap bitmap;
@@ -88,15 +90,19 @@ public class ListBaiHatActivity extends AppCompatActivity {
             setValueInViewAds(theLoai.getTenTheLoai(),theLoai.getHinhTheLoai());
             GetDataTheLoai(theLoai.getIDTheLoai());
         }
-        if (chude != null && !chude.getTenChuDe().equals("")){
-            setValueInViewAds(chude.getTenChuDe(),chude.getHinhChuDe());
-            GetDataChuDe(chude.getIDChuDe());
+//        if (chude != null && !chude.getTenChuDe().equals("")){
+//            setValueInViewAds(chude.getTenChuDe(),chude.getHinhChuDe());
+//            GetDataChuDe(chude.getIDChuDe());
+//        }
+        if (album != null && !album.getTenAlbum().equals("")){
+            setValueInViewAds(album.getTenAlbum(),album.getHinhAlbum());
+            GetDataAlbum(album.getIDAlbum());
         }
     }
 
-    private void GetDataChuDe(String idChuDe) {
+    private void GetDataAlbum(String idAlbum) {
         DataService dataService = APIService.getService();
-        Call<List<Song>> calllistChude = dataService.GetListSongChuDe(idChuDe);
+        Call<List<Song>> calllistChude = dataService.GetListSongAlbum(idAlbum);
         calllistChude.enqueue(new Callback<List<Song>>() {
             @Override
             public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
@@ -216,9 +222,13 @@ public class ListBaiHatActivity extends AppCompatActivity {
             theLoai = (TheLoai) intent.getSerializableExtra("idtheloai");
             Log.d("BBB",theLoai.getIDTheLoai());
         }
-        if (intent.hasExtra("idchude")){
-            chude = (Chude) intent.getSerializableExtra("idchude");
-            Log.d("BBB",chude.getIDChuDe());
+//        if (intent.hasExtra("idchude")){
+//            chude = (Chude) intent.getSerializableExtra("idchude");
+//            Log.d("BBB",chude.getIDChuDe());
+//        }
+        if (intent.hasExtra("idalbum")){
+            album = (Album) intent.getSerializableExtra("idalbum");
+            Log.d("BBB",album.getIDAlbum());
         }
     }
     public class GetImageFromUrl extends AsyncTask<String, Void, Bitmap> {

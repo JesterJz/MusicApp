@@ -1,6 +1,7 @@
 package com.build.myapplication.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.build.myapplication.Activity.ListBaiHatActivity;
 import com.build.myapplication.Model.Album;
 import com.build.myapplication.R;
 import com.squareup.picasso.Picasso;
@@ -55,12 +57,22 @@ public class AlbumAdapter extends BaseAdapter {
             viewHolder.imageViewAlbum = convertView.findViewById(R.id.imgAlbum);
             convertView.setTag(viewHolder);
             
-        }else
+        }else {
             viewHolder = (ViewHolder) convertView.getTag();
-        Album album = albumArrayList.get(position);
-        viewHolder.txtTenAlbum.setText(album.getTenAlbum());
-        viewHolder.txtSinger.setText(album.getTenCaSiAlbum());
-        Picasso.get().load(album.getHinhAlbum()).into(viewHolder.imageViewAlbum);
+        }
+            Album album = albumArrayList.get(position);
+            viewHolder.txtTenAlbum.setText(album.getTenAlbum());
+            viewHolder.txtSinger.setText(album.getTenCaSiAlbum());
+            Picasso.get().load(album.getHinhAlbum()).into(viewHolder.imageViewAlbum);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ListBaiHatActivity.class);
+                intent.putExtra("idalbum",albumArrayList.get(position));
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

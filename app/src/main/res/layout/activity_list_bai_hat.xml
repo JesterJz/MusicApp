@@ -77,14 +77,13 @@
             android:layout_toEndOf="@+id/btnActionAll"
             android:text="Phát tất cả"
             android:textColor="#363636"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:background="@drawable/vien"
         android:scrollbars="none"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

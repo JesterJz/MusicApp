@@ -1,6 +1,7 @@
 package com.build.myapplication.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.build.myapplication.Activity.ListBaiHatActivity;
 import com.build.myapplication.Model.Album;
 import com.build.myapplication.R;
 import com.squareup.picasso.Picasso;
@@ -54,6 +56,14 @@ public class AlbumHotAdapter extends RecyclerView.Adapter<AlbumHotAdapter.ViewHo
             imageViewAlbum = itemView.findViewById(R.id.imgAlbum);
             txtSinger = itemView.findViewById(R.id.TenSinger);
             txtTenAlbum = itemView.findViewById(R.id.TenAlbumHot);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ListBaiHatActivity.class);
+                    intent.putExtra("idalbum",arrayAlbumHot.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 

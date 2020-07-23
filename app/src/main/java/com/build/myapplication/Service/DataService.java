@@ -55,11 +55,15 @@ public interface DataService {
     @POST("listsong.php")
     Call<List<Song>> GetListSongTheLoai(@Field("idtheloai") String idtheloai);
 
-    @FormUrlEncoded
-    @POST("listsong.php")
-    Call<List<Song>> GetListSongChuDe(@Field("idchude") String idchude);
+//    @FormUrlEncoded
+//    @POST("listsong.php")
+//    Call<List<Song>> GetListSongChuDe(@Field("idchude") String idchude);
 
     @FormUrlEncoded
     @POST("playlist_theo_chude.php")
     Call<List<Playlist>> GetListTheLoaiByChude(@Field("idchude") String idchude);
+
+    @FormUrlEncoded
+    @POST("listsong.php")
+    Call<List<Song>> GetListSongAlbum(@Field("idalbum") String idbum);
 }
