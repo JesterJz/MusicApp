@@ -15,6 +15,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -74,6 +75,9 @@ public class ListBaiHatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_bai_hat);
+        //kiem tra tinh trang mang
+//        StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(threadPolicy);
         DataIntent();
         AnhXa();
         init();
@@ -110,6 +114,7 @@ public class ListBaiHatActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListBaiHatActivity.this,songArrayList);
                 recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListBaiHatActivity.this));
                 recyclerViewListSong.setAdapter(listSongAdapter);
+                evenClickPlayAll();
             }
 
             @Override
@@ -129,6 +134,7 @@ public class ListBaiHatActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListBaiHatActivity.this,songArrayList);
                 recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListBaiHatActivity.this));
                 recyclerViewListSong.setAdapter(listSongAdapter);
+                evenClickPlayAll();
             }
 
             @Override
@@ -148,6 +154,7 @@ public class ListBaiHatActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListBaiHatActivity.this,songArrayList);
                 recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListBaiHatActivity.this));
                 recyclerViewListSong.setAdapter(listSongAdapter);
+                evenClickPlayAll();
             }
 
             @Override
@@ -167,6 +174,7 @@ public class ListBaiHatActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListBaiHatActivity.this,songArrayList);
                 recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListBaiHatActivity.this));
                 recyclerViewListSong.setAdapter(listSongAdapter);
+                evenClickPlayAll();
             }
 
             @Override
@@ -207,6 +215,7 @@ public class ListBaiHatActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarListBaiHat);
         imageButton = findViewById(R.id.btnActionAll);
         imageView = findViewById(R.id.imageviewListCaKhuc);
+        imageButton.setEnabled(false);
     }
 
     private void DataIntent() {
@@ -250,5 +259,19 @@ public class ListBaiHatActivity extends AppCompatActivity {
             BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(),bitmap);
             collapsingToolbarLayout.setBackground(bitmapDrawable);
         }
+    }
+
+    private void evenClickPlayAll(){
+        imageButton.setEnabled(true);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListBaiHatActivity.this,PlayMusicActivity.class);
+                intent.putExtra("songs",songArrayList);
+                PlayMusicActivity.mediaPlayer.stop();
+                PlayMusicActivity.mediaPlayer.release();
+                startActivity(intent);
+            }
+        });
     }
 }

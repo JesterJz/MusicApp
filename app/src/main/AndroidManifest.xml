@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ListPlaylistByChuDe_Activity"></activity>
+        <activity android:name=".Activity.PlayMusicActivity"></activity>
+        <activity android:name=".Activity.ListPlaylistByChuDe_Activity" />
         <activity android:name=".Activity.ChudeActivity" />
         <activity android:name=".Activity.TheLoaiActivity" />
         <activity android:name=".Activity.ListBaiHatActivity" />

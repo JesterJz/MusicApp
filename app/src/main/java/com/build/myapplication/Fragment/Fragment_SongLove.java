@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.build.myapplication.Adapter.SongLoveAdapter;
+import com.build.myapplication.Model.Song;
 import com.build.myapplication.Model.SongLove;
 import com.build.myapplication.R;
 import com.build.myapplication.Service.APIService;
@@ -44,11 +45,11 @@ public class Fragment_SongLove extends Fragment {
 
     private void GetData() {
         DataService dataService = APIService.getService();
-        Call<List<SongLove>> listSongLove = dataService.GetSongLove();
-        listSongLove.enqueue(new Callback<List<SongLove>>() {
+        Call<List<Song>> listSongLove = dataService.GetSongLove();
+        listSongLove.enqueue(new Callback<List<Song>>() {
             @Override
-            public void onResponse(Call<List<SongLove>> call, Response<List<SongLove>> response) {
-                ArrayList<SongLove> songLoveArrayList = (ArrayList<SongLove>) response.body();
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                ArrayList<Song> songLoveArrayList = (ArrayList<Song>) response.body();
                 Log.d("BBB",songLoveArrayList.get(0).getHinhBaiHat());
                 SongLoveAdapter songLoveAdapter = new SongLoveAdapter(getActivity(),songLoveArrayList);
                 LinearLayoutManager linearLayoutManager =  new LinearLayoutManager(getActivity());
@@ -58,7 +59,7 @@ public class Fragment_SongLove extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<SongLove>> call, Throwable t) {
+            public void onFailure(Call<List<Song>> call, Throwable t) {
 
             }
         });

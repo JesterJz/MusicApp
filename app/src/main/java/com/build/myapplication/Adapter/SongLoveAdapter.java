@@ -1,6 +1,7 @@
 package com.build.myapplication.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.build.myapplication.Activity.PlayMusicActivity;
+import com.build.myapplication.Model.Playlist;
+import com.build.myapplication.Model.Song;
 import com.build.myapplication.Model.SongLove;
 import com.build.myapplication.R;
 import com.squareup.picasso.Picasso;
@@ -18,9 +22,9 @@ import java.util.ArrayList;
 
 public class SongLoveAdapter extends RecyclerView.Adapter<SongLoveAdapter.ViewHolder> {
     Context context;
-    ArrayList<SongLove> songLoveArrayList;
+    ArrayList<Song> songLoveArrayList;
 
-    public SongLoveAdapter(Context context, ArrayList<SongLove> songLoveArrayList) {
+    public SongLoveAdapter(Context context, ArrayList<Song> songLoveArrayList) {
         this.context = context;
         this.songLoveArrayList = songLoveArrayList;
     }
@@ -35,7 +39,7 @@ public class SongLoveAdapter extends RecyclerView.Adapter<SongLoveAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SongLove songLove = songLoveArrayList.get(position);
+        Song songLove = songLoveArrayList.get(position);
         holder.txtTenCasi.setText(songLove.getCaSi());
         holder.txtTenBaiHat.setText(songLove.getTenBaiHat());
         Picasso.get().load(songLove.getHinhBaiHat()).into(holder.imgBaiHat);
@@ -55,6 +59,16 @@ public class SongLoveAdapter extends RecyclerView.Adapter<SongLoveAdapter.ViewHo
             txtTenCasi = itemView.findViewById(R.id.textviewTenCaSi);
             imgBaiHat = itemView.findViewById(R.id.imageSongLove);
             imgLuotThich = itemView.findViewById(R.id.imageviewlove);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PlayMusicActivity.class);
+                    intent.putExtra("song",songLoveArrayList.get(getPosition()));
+                    PlayMusicActivity.mediaPlayer.stop();
+                    PlayMusicActivity.mediaPlayer.release();
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

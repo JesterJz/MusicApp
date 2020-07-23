@@ -41,7 +41,7 @@ public interface DataService {
     Call<List<Album>> GetAlBum();
 
     @GET("SongLove.php")
-    Call<List<SongLove>> GetSongLove();
+    Call<List<Song>> GetSongLove();
 
     @FormUrlEncoded
     @POST("listsong.php")

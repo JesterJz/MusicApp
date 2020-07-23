@@ -3,7 +3,9 @@ package com.build.myapplication.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SongLove {
+import java.io.Serializable;
+
+public class SongLove implements Serializable {
 
 @SerializedName("IDBaiHat")
 @Expose
