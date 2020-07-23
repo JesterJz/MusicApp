@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
         AnhXa();
         init();
     }
+
     private void init() {
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),getChangingConfigurations());
-        viewPagerAdapter.addFragment(new Fragment_Home(),"Trang Chủ");
-        viewPagerAdapter.addFragment(new Fragment_Search(),"Tìm Kiếm");
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), getChangingConfigurations());
+        viewPagerAdapter.addFragment(new Fragment_Home(), "Trang Chủ");
+        viewPagerAdapter.addFragment(new Fragment_Search(), "Tìm Kiếm");
 //        viewPagerAdapter.addFragment(new Fragment_Search(),"BXH");
 //        viewPagerAdapter.addFragment(new Fragment_Chude(),"Chủ Đề");
         viewPager.setOffscreenPageLimit(3);
