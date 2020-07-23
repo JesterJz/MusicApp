@@ -16,9 +16,6 @@ private String tenChuDe;
 @SerializedName("HinhChuDe")
 @Expose
 private String hinhChuDe;
-@SerializedName("IDPlayList")
-@Expose
-private String iDPlayList;
 
 public String getIDChuDe() {
 return iDChuDe;
@@ -44,13 +41,5 @@ public void setHinhChuDe(String hinhChuDe) {
 this.hinhChuDe = hinhChuDe;
 }
 
-public String getIDPlayList() {
-return iDPlayList;
-}
-
-public void setIDPlayList(String iDPlayList) {
-this.iDPlayList = iDPlayList;
-}
 
 }
-

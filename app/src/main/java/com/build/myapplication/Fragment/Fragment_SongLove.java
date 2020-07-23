@@ -49,6 +49,7 @@ public class Fragment_SongLove extends Fragment {
             @Override
             public void onResponse(Call<List<SongLove>> call, Response<List<SongLove>> response) {
                 ArrayList<SongLove> songLoveArrayList = (ArrayList<SongLove>) response.body();
+                Log.d("BBB",songLoveArrayList.get(0).getHinhBaiHat());
                 SongLoveAdapter songLoveAdapter = new SongLoveAdapter(getActivity(),songLoveArrayList);
                 LinearLayoutManager linearLayoutManager =  new LinearLayoutManager(getActivity());
                 linearLayoutManager.setOrientation(RecyclerView.VERTICAL);

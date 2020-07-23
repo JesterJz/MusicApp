@@ -10,7 +10,6 @@ import android.widget.Button;
 
 import com.build.myapplication.Adapter.ViewPagerAdapter;
 import com.build.myapplication.Fragment.Fragment_AlbumHot;
-import com.build.myapplication.Fragment.Fragment_Chude;
 import com.build.myapplication.Fragment.Fragment_Home;
 import com.build.myapplication.Fragment.Fragment_Search;
 import com.build.myapplication.R;
@@ -33,15 +32,15 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new Fragment_Home(),"Trang Chủ");
         viewPagerAdapter.addFragment(new Fragment_Search(),"Tìm Kiếm");
 //        viewPagerAdapter.addFragment(new Fragment_Search(),"BXH");
-        viewPagerAdapter.addFragment(new Fragment_Chude(),"Chủ Đề");
-        viewPager.setOffscreenPageLimit(4);
+//        viewPagerAdapter.addFragment(new Fragment_Chude(),"Chủ Đề");
+        viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         //set icon for tab
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_home_24);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_24);
 //        tabLayout.getTabAt(2).setIcon(R.drawable.ic_ranting_24);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_topics_24);
+//        tabLayout.getTabAt(2).setIcon(R.drawable.ic_topics_24);
 
     }
 

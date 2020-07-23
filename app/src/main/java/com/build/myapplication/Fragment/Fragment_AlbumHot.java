@@ -1,5 +1,6 @@
 package com.build.myapplication.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.build.myapplication.Activity.AlbumActivity;
 import com.build.myapplication.Adapter.AlbumHotAdapter;
 import com.build.myapplication.Model.Album;
 import com.build.myapplication.R;
@@ -44,6 +46,13 @@ public class Fragment_AlbumHot extends Fragment {
     private void AnhXa() {
         recyclerViewAlbumHot = view.findViewById(R.id.recycerViewAlbumhot);
         textView = view.findViewById(R.id.moreAlbumhot);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AlbumActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void GetData() {

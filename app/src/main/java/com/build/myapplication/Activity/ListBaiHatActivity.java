@@ -76,7 +76,7 @@ public class ListBaiHatActivity extends AppCompatActivity {
         AnhXa();
         init();
         if (quangCao != null && !quangCao.getTenBaiHat().equals("")){
-            setValueInViewAds(quangCao.getTenBaiHat(),quangCao.getHinhBaiHat());
+            setValueInView(quangCao.getTenBaiHat(),quangCao.getHinhAnhAds(),quangCao.getHinhBaiHat());
             GetDataAds(quangCao.getIDAds());
         }
         if (playlist != null && !playlist.getTen().equals("")){

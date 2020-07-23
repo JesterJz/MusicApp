@@ -56,7 +56,7 @@ public class AlbumActivity extends AppCompatActivity {
             public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
                 ArrayList<Album> albumArrayList = (ArrayList<Album>) response.body();
                 AlbumAdapter albumAdapter = new AlbumAdapter(AlbumActivity.this,albumArrayList);
-//                gridView.setHorizontalSpacing(30);
+                gridView.setHorizontalSpacing(30);
                 gridView.setVerticalSpacing(30);
                 gridView.setAdapter(albumAdapter);
             }

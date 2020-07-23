@@ -16,7 +16,9 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.build.myapplication.Activity.ChudeActivity;
 import com.build.myapplication.Activity.ListBaiHatActivity;
+import com.build.myapplication.Activity.ListPlaylistByChuDe_Activity;
 import com.build.myapplication.Model.Chude;
 import com.build.myapplication.Model.ChudeAll;
 import com.build.myapplication.R;
@@ -29,7 +31,6 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 public class Fragment_ChuDe_Current_Day extends Fragment {
     HorizontalScrollView horizontalScrollView;
     TextView txtMoreChuDe;
@@ -49,7 +50,14 @@ public class Fragment_ChuDe_Current_Day extends Fragment {
     private void AnhXa() {
         horizontalScrollView = view.findViewById(R.id.scrollViewChuDe);
         //   horizontalScrollView.fullScroll(HorizontalScrollView.FOCUS_LEFT);
-//        txtMoreChuDe = view.findViewById(R.id.moreChuDe);
+        txtMoreChuDe = view.findViewById(R.id.moreChuDe);
+        txtMoreChuDe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChudeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void GetData() {
@@ -81,7 +89,7 @@ public class Fragment_ChuDe_Current_Day extends Fragment {
                     imageView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent = new Intent(getActivity(), ListBaiHatActivity.class);
+                            Intent intent = new Intent(getActivity(), ListPlaylistByChuDe_Activity.class);
                             intent.putExtra("idchude", ChuDeCurrentDay.get(finalI));
                             startActivity(intent);
                         }

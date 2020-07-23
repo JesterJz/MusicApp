@@ -15,15 +15,15 @@
             android:textColor="#000"
             android:text="Chủ đề"
             android:textStyle="bold"/>
-<!--        <TextView-->
-<!--            android:id="@+id/moreChuDe"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:text=">>"-->
-<!--            android:textSize="20dp"-->
-<!--            android:layout_marginTop="2dp"-->
-<!--            android:layout_marginRight="10dp"/>-->
+        <TextView
+            android:id="@+id/moreChuDe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text=">>"
+            android:textSize="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"/>
     </RelativeLayout>
     <HorizontalScrollView
         android:id="@+id/scrollViewChuDe"

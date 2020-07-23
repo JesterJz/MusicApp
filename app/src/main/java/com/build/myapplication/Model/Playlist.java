@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Playlist implements Serializable {
+public class Playlist implements Serializable{
 
     @SerializedName("IDPlayList")
     @Expose
@@ -19,37 +19,48 @@ public class Playlist implements Serializable {
     @SerializedName("HinhIcon")
     @Expose
     private String hinhIcon;
+    @SerializedName("IDChuDe")
+    @Expose
+    private String iDChuDe;
 
-public String getIDPlayList() {
-return iDPlayList;
-}
+    public String getIDPlayList() {
+        return iDPlayList;
+    }
 
-public void setIDPlayList(String iDPlayList) {
-this.iDPlayList = iDPlayList;
-}
+    public void setIDPlayList(String iDPlayList) {
+        this.iDPlayList = iDPlayList;
+    }
 
-public String getTen() {
-return ten;
-}
+    public String getTen() {
+        return ten;
+    }
 
-public void setTen(String ten) {
-this.ten = ten;
-}
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
 
-public String getHinhNen() {
-return hinhNen;
-}
+    public String getHinhNen() {
+        return hinhNen;
+    }
 
-public void setHinhNen(String hinhNen) {
-this.hinhNen = hinhNen;
-}
+    public void setHinhNen(String hinhNen) {
+        this.hinhNen = hinhNen;
+    }
 
-public String getHinhIcon() {
-return hinhIcon;
-}
+    public String getHinhIcon() {
+        return hinhIcon;
+    }
 
-public void setHinhIcon(String hinhIcon) {
-this.hinhIcon = hinhIcon;
-}
+    public void setHinhIcon(String hinhIcon) {
+        this.hinhIcon = hinhIcon;
+    }
+
+    public String getIDChuDe() {
+        return iDChuDe;
+    }
+
+    public void setIDChuDe(String iDChuDe) {
+        this.iDChuDe = iDChuDe;
+    }
 
 }

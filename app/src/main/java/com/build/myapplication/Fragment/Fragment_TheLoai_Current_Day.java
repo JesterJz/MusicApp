@@ -17,6 +17,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.build.myapplication.Activity.ListBaiHatActivity;
+import com.build.myapplication.Activity.TheLoaiActivity;
 import com.build.myapplication.Model.QuangCao;
 import com.build.myapplication.Model.TheLoai;
 import com.build.myapplication.R;
@@ -34,7 +35,7 @@ import retrofit2.Response;
 public class Fragment_TheLoai_Current_Day extends Fragment {
 
     HorizontalScrollView horizontalScrollView;
-    TextView textView;
+    TextView txtmoreTheLoai;
     ArrayList<TheLoai> theLoaiArrayList;
     View view;
 
@@ -92,7 +93,14 @@ public class Fragment_TheLoai_Current_Day extends Fragment {
 
     private void AnhXa() {
         horizontalScrollView = view.findViewById(R.id.scrollViewTheLoai);
-        textView = view.findViewById(R.id.moreTheLoai);
+        txtmoreTheLoai = view.findViewById(R.id.moreTheLoai);
+        txtmoreTheLoai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),TheLoaiActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

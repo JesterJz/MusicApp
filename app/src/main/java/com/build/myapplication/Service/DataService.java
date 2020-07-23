@@ -28,6 +28,9 @@ public interface DataService {
     @GET("TheLoai_current_day.php")
     Call<List<TheLoai>> GetTheLoaiCurrentDay();
 
+    @GET("theloai_all.php")
+    Call<List<TheLoai>> GetTheLoaiAll();
+
     @GET("Chude_current_day.php")
     Call<ChudeAll> GetChuDeAllAndCurrentDay();
 
@@ -56,4 +59,7 @@ public interface DataService {
     @POST("listsong.php")
     Call<List<Song>> GetListSongChuDe(@Field("idchude") String idchude);
 
+    @FormUrlEncoded
+    @POST("playlist_theo_chude.php")
+    Call<List<Playlist>> GetListTheLoaiByChude(@Field("idchude") String idchude);
 }
