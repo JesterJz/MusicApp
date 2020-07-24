@@ -28,7 +28,7 @@
         android:layout_marginBottom="10dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="cos cai lo "
+        android:text="ten"
         android:textColor="#fff"
         android:textStyle="bold" />
 </RelativeLayout>
