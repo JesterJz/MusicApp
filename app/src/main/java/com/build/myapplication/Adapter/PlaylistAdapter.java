@@ -21,24 +21,25 @@ public class PlaylistAdapter extends ArrayAdapter<Playlist> {
     public PlaylistAdapter(@NonNull Context context, int resource, @NonNull List<Playlist> objects) {
         super(context, resource, objects);
     }
-    class ViewHolder{
+
+    class ViewHolder {
         TextView textView;
-        ImageView imageViewBackGround,imageViewIcon;
+        ImageView imageViewBackGround, imageViewIcon;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         ViewHolder viewHolder = null;
-        if (convertView == null){
+        if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.line_playlist,null);
+            convertView = inflater.inflate(R.layout.line_playlist, null);
             viewHolder = new ViewHolder();
             viewHolder.textView = convertView.findViewById(R.id.txtTitlePlaylist);
             viewHolder.imageViewBackGround = convertView.findViewById(R.id.imageViewBackgroundPlaylist);
             viewHolder.imageViewIcon = convertView.findViewById(R.id.imgIconPlaylist);
             convertView.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Playlist playlist = getItem(position);

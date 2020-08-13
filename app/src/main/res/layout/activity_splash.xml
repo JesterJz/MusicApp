@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.SplashActivity">
 
-  <ImageView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:scaleType="fitXY"
-      android:src="@drawable/panel_app" />
+    <TextView
+        android:id="@+id/textViewNameApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/akronim"
+        android:text="Music App"
+        android:textSize="40sp" />
 
+  <TextView
+      android:id="@+id/textViewInfor"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/textViewNameApp"
+      android:fontFamily="cursive"
+      android:gravity="center"
+      android:text="Lossless - Hires - HQ"
+      android:textAllCaps="false"
+      android:textSize="15sp"
+      android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewMakeBy"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/akronim"
+        android:text="Văn Bình - Thanh Tâm"
+        android:textSize="20sp" />
 </RelativeLayout>
