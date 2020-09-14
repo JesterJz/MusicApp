@@ -15,25 +15,27 @@
         android:text="Music App"
         android:textSize="40sp" />
 
-  <TextView
-      android:id="@+id/textViewInfor"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_below="@id/textViewNameApp"
-      android:fontFamily="cursive"
-      android:gravity="center"
-      android:text="Lossless - Hires - HQ"
-      android:textAllCaps="false"
-      android:textSize="15sp"
-      android:textStyle="bold" />
-
     <TextView
-        android:id="@+id/textViewMakeBy"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/textViewInfor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/akronim"
-        android:text="Văn Bình - Thanh Tâm"
-        android:textSize="20sp" />
+        android:layout_below="@id/textViewNameApp"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="Lossless - Hires - HQ"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewCopyRight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="---Jester---"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
 </RelativeLayout>
